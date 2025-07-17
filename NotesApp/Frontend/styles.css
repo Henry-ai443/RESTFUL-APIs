@@ -1,0 +1,70 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: #ccc;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    margin: 0;
+    padding: 0;
+}
+.noteCard{
+    background-color: #fff;
+    padding: 20px;
+    border: none;
+    border-radius: 8px;
+    width: 300px;
+}
+.note-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.deleteBtn:hover{
+    background-color: rgb(150, 1, 1);
+}
+#edit-form-container{
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.editForm{
+    width: 400px;
+    text-align: center;
+}
+.editForm input{
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 8px;
+    outline: none;
+}
+.editForm textarea{
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 8px;
+    outline: none;
+    height: 200px;
+}
+.updateBtn{
+    background-color: blue;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition-duration: 0.5s;
+}
+.updateBtn:hover{
+    background-color: rgb(1, 1, 145);
+    transition-duration: 0.5s;
+}

@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>NOTES APP</h1>
+    <div id="edit-form-container" style="display:none;">
+        <form action="" id="editForm" class="editForm">
+            <h1>Edit Your Note</h1>
+            <input type="hidden" id="note-id">
+            <input type="text" id="edit-note-title">
+            <textarea name="" id="edit-note-entry"></textarea>
+            <button type="submit" class="updateBtn">Update</button>
+    </form>
+    </div>
+    <div id="welcomeMsg"></div>
+    <h2>View your Notes here...</h2>
+    <h4><a href="note-form.html">Click To Create A new Note</a></h4>
+    <button onclick="logout()" style="background-color: blue;border:none;padding:10px 15px;border-radius:4px;color:white;font-weight:bold;cursor:pointer;">Logout</button>
+    <div class="container">
+
+        <form action="" id="noteForm"></form>
+        <div class="notesContainer">
+            <div id="noteList" class="note-container"></div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        const name = localStorage.getItem('username');
+        document.getElementById('welcomeMsg').innerHTML = `<strong>Hello, </strong>${name}`;
+    </script>
+</body>
+</html>

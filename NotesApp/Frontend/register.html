@@ -1,0 +1,112 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <style>
+         body{
+     background: #ccc;
+     margin: 0;
+     padding: 0;
+     display: flex;
+     height: 100vh;
+     justify-content: center;
+     align-items: center;
+ }
+ .container{
+     background-color: #fff;
+     padding: 20px;
+     text-align: center;
+     border-radius: 8px;
+     box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.4);
+ }
+ form{
+     width: 300px;
+ }
+ form input{
+     width: 100%;
+     padding: 10px;
+     margin: 10px 0;
+     border: 1px solid rgb(184, 183, 183);
+     border-radius: 8px;
+     outline: none;
+     font-size: 16px;
+ }
+ h2{
+     color: rgb(104, 103, 103);
+ }
+ button{
+     padding: 10px 15px;
+     font-size: 18px;
+     background-color: blue;
+     color: white;
+     font-weight: bold;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+     transition-duration: 0.5s;
+ }
+ button:hover{
+     background-color: rgb(4, 4, 135);
+ }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <form action="" id="registerForm">
+            <h2>Register</h2>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            <div id="error"></div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+
+        const form = document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const confirmPassword = document.getElementById('confirmPassword').value.trim()
+            const err = document.getElementById('error')
+
+            if(password !== confirmPassword){
+                err.textContent = 'Passwords do not match!';
+                return;
+            }
+
+            const req = await fetch('http://127.0.0.1:8000/api/register/', {
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify({
+                    username,
+                    email,
+                    password
+                })
+            })
+
+            const res = await req.json();
+            if(req.ok){
+                localStorage.setItem('token', res.token);
+                localStorage.setItem('username', res.user.username)
+                window.location.href='index.html';
+                alert('Registration Successfull!')
+            }else{
+                err.textContent = 'A user with that username or email already exists!!++'
+            }
+
+        });
+
+    </script>
+
+
+</body>
+</html>
